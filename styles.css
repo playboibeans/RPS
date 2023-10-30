@@ -6,18 +6,25 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+header {
+    text-align: center;
+    font-size: 60px;
+    padding-top: 20px 0 20px 0;
+    background-color: black;
+    color: white;
+}
+
 #outer {
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px;
-
+    padding: 0 50px;
 }
 
 #playerPick,
 #comPick {
-    font-size: 200px
+    font-size: 200px;
 }
 
 #content {
@@ -38,7 +45,6 @@ body {
 }
 
 footer {
-    padding: 5px;
 
     text-align: center;
 }
@@ -57,9 +63,18 @@ button {
 
 
 
-button#reset {
+#reset {
     background-color: red;
 }
+
+#reset:hover {
+    background-color: rgb(238, 51, 51);
+}
+
+#reset:active {
+    background-color: rgb(238, 92, 92);
+}
+
 
 #buttons {
     width: 900px;
@@ -81,5 +96,19 @@ button#reset {
 #rock:disabled,
 #paper:disabled,
 #scissors:disabled {
-    background-color: gray;
+    background-color: white;
+    border: 1px dashed black;
+
+}
+
+#rock:not(:disabled):hover,
+#paper:not(:disabled):hover,
+#scissors:not(:disabled):hover {
+    background-color: rgb(85, 85, 85);
+}
+
+#rock:not(:disabled):active,
+#paper:not(:disabled):active,
+#scissors:not(:disabled):active {
+    background-color: rgb(163, 163, 163);
 }
