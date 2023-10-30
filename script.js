@@ -29,8 +29,45 @@ function startGame(playerSelection) {
         playerScore += 1
     }
 
-    document.querySelector('#picks').textContent = 'You: ' + player + ', Computer: ' + com
-    document.querySelector('#scores').textContent = playerScore + ':' + comScore
+    if (player == 'rock') {
+        document.querySelector('#playerPick').textContent = '✊'
+    } else if (player == 'paper') {
+        document.querySelector('#playerPick').textContent = '✋'
+    } else if (player == 'scissors') {
+        document.querySelector('#playerPick').textContent = '✌️'
+    } else {
+        document.querySelector('#playerPick').textContent = '👩‍💻'
+    }
+
+    if (com == 'rock') {
+        document.querySelector('#comPick').textContent = '✊'
+    } else if (com == 'paper') {
+        document.querySelector('#comPick').textContent = '✋'
+    } else if (com == 'scissors') {
+        document.querySelector('#comPick').textContent = '✌️'
+    } else {
+        document.querySelector('#comPick').textContent = '💻'
+    }
+
+
+
+    document.querySelector('#scores').textContent = '👩‍💻 ' + playerScore + ' : ' + comScore + ' 💻'
+
+    if (playerScore == 5) {
+        document.querySelector('#scores').textContent = 'You Won!'
+
+        document.querySelector('#rock').setAttribute('disabled', 'true')
+        document.querySelector('#paper').setAttribute('disabled', 'true')
+        document.querySelector('#scissors').setAttribute('disabled', 'true')
+
+    } else if (comScore == 5) {
+        document.querySelector('#scores').textContent = 'Computer Won :('
+
+        document.querySelector('#rock').setAttribute('disabled', 'true')
+        document.querySelector('#paper').setAttribute('disabled', 'true')
+        document.querySelector('#scissors').setAttribute('disabled', 'true')
+
+    }
 }
 
 
@@ -52,9 +89,16 @@ scissors.addEventListener('click', () => {
 reset.addEventListener('click', () => {
     playerScore = 0
     comScore = 0
-    document.querySelector('#picks').textContent = 'You: -, Computer: -'
-    document.querySelector('#scores').textContent = playerScore + ':' + comScore
+    document.querySelector('#scores').textContent = '👩‍💻 ' + playerScore + ' : ' + comScore + ' 💻'
+    document.querySelector('#playerPick').textContent = '👩‍💻'
+    document.querySelector('#comPick').textContent = '💻'
+    document.querySelector('#rock').removeAttribute('disabled')
+    document.querySelector('#paper').removeAttribute('disabled')
+    document.querySelector('#scissors').removeAttribute('disabled')
+
 })
+
+
 
 // function game() {
 
