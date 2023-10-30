@@ -8,49 +8,68 @@ function getComputerChoice() {
     return rps[comChoice]
 }
 
-function startGame(playerSelection, computerSelection) {
+function startGame(playerSelection) {
 
-    let player = playerSelection.toLowerCase()
-    let com = computerSelection
+    let player = playerSelection
+    let com = getComputerChoice()
 
     if (player == com) {
-        playerScore += 0
-        comScore += 0
-        return 'tie'
+
     } else if (player == 'rock' && com == 'paper') {
         comScore += 1
-        return 'you lose, paper beats rock'
     } else if (player == 'rock' && com == 'scissors') {
         playerScore += 1
-        return 'you win, rock beats scissors'
     } else if (player == 'paper' && com == 'scissors') {
         comScore += 1
-        return 'you lose, scissors beats paper'
     } else if (player == 'paper' && com == 'rock') {
         playerScore += 1
-        return 'you win, paper beats rock'
     } else if (player == 'scissors' && com == 'rock') {
         comScore += 1
-        return 'you lose, rock beats scissors'
     } else if (player == 'scissors' && com == 'paper') {
         playerScore += 1
-        return 'you win, scissors beats paper'
     }
+
+    document.querySelector('#picks').textContent = 'You: ' + player + ', Computer: ' + com
+    document.querySelector('#scores').textContent = playerScore + ':' + comScore
 }
 
 
-function game() {
-    for (let i = 0; i < 5; i++) {
+let rock = document.querySelector('#rock')
+let paper = document.querySelector('#paper')
+let scissors = document.querySelector('#scissors')
+let reset = document.querySelector('#reset')
 
-        console.log(startGame(prompt("rock paper scissors?"), getComputerChoice()))
-    }
-    if (playerScore > comScore) {
-        console.log('you ' + playerScore + ': computer ' + comScore + ', you beat the computer!')
-    } else if (comScore > playerScore) {
-        console.log('you ' + playerScore + ': computer ' + comScore + ', you just lost to the computer')
-    } else {
-        console.log('you ' + playerScore + ': computer ' + comScore + ', it was a tie!')
-    }
-}
+rock.addEventListener('click', () => {
+    startGame('rock')
+})
+paper.addEventListener('click', () => {
+    startGame('paper')
+})
+scissors.addEventListener('click', () => {
+    startGame('scissors')
+})
 
-game()
+reset.addEventListener('click', () => {
+    playerScore = 0
+    comScore = 0
+    document.querySelector('#picks').textContent = 'You: -, Computer: -'
+    document.querySelector('#scores').textContent = playerScore + ':' + comScore
+})
+
+// function game() {
+
+//     if (playerScore > comScore) {
+//         console.log('you ' + playerScore + ': computer ' + comScore + ', you beat the computer!')
+//     } else if (comScore > playerScore) {
+//         console.log('you ' + playerScore + ': computer ' + comScore + ', you just lost to the computer')
+//     } else {
+//         console.log('you ' + playerScore + ': computer ' + comScore + ', it was a tie!')
+//     }
+// }
+
+
+
+
+
+
+
